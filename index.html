@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iroai - 導入で終わらせない、成果が続くAI活用へ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP + Noto Serif JP -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 添付スクショに合わせた色/フォント定義 */
+        :root {
+            --main-green: #036819;
+            --accent-yellow: #F0BB3B;
+            --accent-blue: #2B73FF;
+            --bg-soft-gray: #F8FEF8;
+            --text-base: #364C38;
+            --text-muted: #607A60;
+            --text-light: #7A907A;
+            --border-soft: #E0E6E1;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-base);
+            scroll-behavior: smooth;
+        }
+
+        /* 見出し・ロゴは明朝寄り */
+        h1, h2, h3,
+        header .text-2xl,
+        footer .text-2xl {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* カスタムカラークラス */
+        .bg-main-green { background-color: var(--main-green); }
+        .text-main-green { color: var(--main-green); }
+        .bg-accent-yellow { background-color: var(--accent-yellow); }
+        .text-accent-yellow { color: var(--accent-yellow); }
+        .border-accent-yellow { border-color: var(--accent-yellow); }
+        .bg-soft-gray { background-color: var(--bg-soft-gray); }
+
+        /* 元コード内の typo クラス（色だけ反映） */
+        .bg-bg-soft-gray { background-color: var(--bg-soft-gray); }
+
+        /* Tailwindの灰色系を“グレーグリーン”に寄せる（色だけ上書き） */
+        .text-gray-600 { color: var(--text-muted) !important; }
+        .text-gray-500 { color: var(--text-muted) !important; }
+        .text-gray-400 { color: var(--text-light) !important; }
+        .text-gray-700 { color: var(--text-base) !important; }
+
+        .border-gray-100 { border-color: var(--border-soft) !important; }
+        .border-gray-200 { border-color: var(--border-soft) !important; }
+
+        .bg-gray-50 { background-color: var(--bg-soft-gray) !important; }
+        .bg-gray-100 { background-color: var(--bg-soft-gray) !important; }
+
+        /* ヘッダー/モバイルメニューだけ背景をミントに（カードの白は維持） */
+        header.bg-white { background-color: var(--bg-soft-gray) !important; }
+        #mobile-menu.bg-white { background-color: var(--bg-soft-gray) !important; }
+
+        /* Service03の青（スクショ寄り） */
+        .bg-blue-400 { background-color: var(--accent-blue) !important; }
+
+        /* ボタンホバー時のスタイル調整 */
+        .btn-hover:hover { opacity: 0.9; transition: opacity 0.2s; }
+
+        /* モバイルメニュー表示・非表示アニメーション用 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm border-b border-gray-100">
+        <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
+            <div class="text-2xl font-bold text-main-green tracking-tight font-bold">iroai</div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-600">
+                <a href="#features" class="hover:text-main-green transition font-bold">特長</a>
+                <a href="#services" class="hover:text-main-green transition font-bold">サービス</a>
+                <a href="#profile" class="hover:text-main-green transition font-bold">プロフィール</a>
+                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="bg-accent-yellow text-white px-6 py-2.5 rounded-full btn-hover">お問い合わせ</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle" class="md:hidden text-main-green p-2 focus:outline-none">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="md:hidden bg-white text-center">
+            <div class="flex flex-col space-y-4 py-6 px-6 text-gray-600 font-bold">
+                <a href="#features" class="mobile-link py-2 hover:text-main-green">特長</a>
+                <a href="#services" class="mobile-link py-2 hover:text-main-green">サービス</a>
+                <a href="#profile" class="mobile-link py-2 hover:text-main-green">プロフィール</a>
+                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="bg-accent-yellow text-white px-6 py-3 rounded-full btn-hover">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 bg-soft-gray text-center overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <!-- Tag -->
+            <div class="inline-block bg-white border border-gray-200 text-main-green text-[10px] md:text-xs px-4 py-1.5 rounded-full mb-6 font-bold tracking-wider shadow-sm">
+                AI導入支援 / AI研修 / AI顧問
+            </div>
+            <!-- Main Title -->
+           <h1 class="text-4xl md:text-6xl font-bold mb-6 text-main-green">
+  導入で終わらせない
+  <span class="block mt-3 md:mt-4">
+    <span class="text-accent-yellow">成果が続く</span> AI活用へ
+  </span>
+            </h1>
+            <!-- Sub Title -->
+            <p class="text-sm md:text-base text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed px-4">
+                導入〜運用〜定着まで伴走し、成果が出続ける仕組みに整えます。
+            </p>
+            
+            <!-- Checklist Box -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto text-left mb-10">
+                <ul class="space-y-4 font-medium text-sm md:text-base">
+                    <li class="flex items-start">
+                        <span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-accent-yellow text-sm font-bold"
+      style="background-color: rgba(240, 187, 59, 0.22);">
+  ✓
+</span>
+                        <span>現場の業務を棚卸し、改善テーマを特定</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-accent-yellow text-sm font-bold"
+      style="background-color: rgba(240, 187, 59, 0.22);">
+  ✓
+</span>
+                        <span>研修で終わらず、社内定着まで伴走</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-accent-yellow text-sm font-bold"
+      style="background-color: rgba(240, 187, 59, 0.22);">
+  ✓
+</span>
+                        <span>小さく始めて効果を検証 →自動化/内製化へ</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-6 md:px-0">
+                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="bg-accent-yellow text-white px-10 py-4 rounded-full font-bold shadow-md btn-hover">無料で相談する ＞</a>
+                <a href="#services" class="bg-white border border-gray-200 text-main-green px-10 py-4 rounded-full font-bold hover:bg-gray-50 transition">サービスを見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="py-20 md:py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-main-green mb-4 px-2">こんなお悩みありませんか？</h2>
+        <p class="text-center text-gray-500 mb-12 md:mb-16 text-sm md:text-base">AI導入の必要性は感じているものの、現場での定着に課題を感じている企業様が増えています。</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div class="w-12 h-12 bg-bg-soft-gray text-main-green rounded-full flex items-center justify-center font-bold mb-6 text-lg border border-gray-200">1</div>
+                <h3 class="text-lg font-bold text-main-green mb-3">導入したけど使われない</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">ChatGPT等のツールを契約したが、一部の社員しか使っておらず、費用対効果が見えない。</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div class="w-12 h-12 bg-bg-soft-gray text-main-green rounded-full flex items-center justify-center font-bold mb-6 text-lg border border-gray-200">2</div>
+                <h3 class="text-lg font-bold text-main-green mb-3">教えられる人がいない</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">社内に詳しい人材がおらず、体系的な教育ができない。独学では限界を感じている。</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div class="w-12 h-12 bg-bg-soft-gray text-main-green rounded-full flex items-center justify-center font-bold mb-6 text-lg border border-gray-200">3</div>
+                <h3 class="text-lg font-bold text-main-green mb-3">業務への活かし方が不明</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">「すごい」とは聞くが、自社の具体的な業務のどこにどう使えるのかイメージが湧かない。</p>
+            </div>
+        </div>
+
+        <!-- Solution Box -->
+        <div class="bg-soft-gray border border-gray-100 p-8 rounded-2xl text-center max-w-3xl mx-auto">
+            <p class="text-main-green font-medium leading-relaxed text-sm md:text-base px-2">
+                iroaiは、<span class="text-accent-yellow font-bold text-lg md:text-xl">「現場への定着」</span>をゴールに、<br class="hidden md:block">
+                初心者にもわかりやすい研修と、実務に即した導入支援を提供します。
+            </p>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section id="features" class="bg-soft-gray py-20 md:py-24 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-accent-yellow font-bold text-xs mb-3 tracking-widest uppercase">Why iroai</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-main-green mb-12 md:mb-16">選ばれる3つの理由</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Reason 1 -->
+                <div>
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-gray-100">
+                        <svg class="w-10 h-10 text-main-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4 text-main-green">初心者目線のわかりやすさ</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed px-4 md:px-0">専門用語を極力使わず、ITに苦手意識のある方でも「わかった！」「できた！」を実感できる丁寧な指導を心がけています。</p>
+                </div>
+                <!-- Reason 2 -->
+                <div>
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-gray-100">
+                        <svg class="w-10 h-10 text-main-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4 text-main-green">実務直結のカリキュラム</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed px-4 md:px-0">一般的な機能説明ではなく、「明日の業務でどう使うか」に焦点を当て、貴社の業務内容に合わせた実践的なワークを行います。</p>
+                </div>
+                <!-- Reason 3 -->
+                <div>
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-gray-100">
+                        <svg class="w-10 h-10 text-main-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4 text-main-green">安心の伴走サポート</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed px-4 md:px-0">研修して終わりではありません。導入後の疑問解消やルールの策定など、自走できるまで親身にサポートします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-24 px-6 max-w-7xl mx-auto">
+        <p class="text-center text-accent-yellow font-bold text-xs mb-3 tracking-widest uppercase">Services</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-main-green mb-4">ご提供サービス</h2>
+        <p class="text-center text-gray-500 mb-12 md:mb-16 text-sm md:text-base">課題に合わせて、3つの柱でサポートします。</p>
+
+        <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+            <!-- Service 1 -->
+            <div class="border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col bg-white">
+                <div class="bg-main-green h-2 w-full"></div>
+                <div class="p-8 flex-grow">
+                    <span class="text-xs text-gray-400 font-bold mb-3 block tracking-wider uppercase tracking-widest">Service 01</span>
+                    <h3 class="text-xl font-bold text-main-green mb-3">AI導入支援</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-medium">組織へのAI導入をサポート</p>
+                    <p class="text-sm text-gray-600 mb-8 leading-relaxed">現状の業務フローを整理し、どこにAIを活用できるかを診断。ツールの選定からガイドライン策定、現場への定着までをサポートします。</p>
+                    <ul class="text-sm space-y-3 mb-8 font-medium">
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 現状業務のヒアリング</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 課題整理・優先順位づけ</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 効果検証</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 導入後の改善提案</li>
+                    </ul>
+                </div>
+                <div class="p-8 pt-0">
+                    <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="block w-full text-center py-3 bg-main-green text-white rounded-lg font-bold btn-hover">導入について相談する</a>
+                </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="border-2 border-accent-yellow rounded-2xl overflow-hidden shadow-md flex flex-col bg-white md:scale-[1.05] z-10 my-4 md:my-0">
+                <div class="bg-accent-yellow h-3 w-full"></div>
+                <div class="p-8 flex-grow">
+                    <span class="text-xs text-accent-yellow font-bold mb-3 block tracking-wider uppercase tracking-widest">Service 02</span>
+                    <h3 class="text-xl font-bold text-main-green mb-3">AI研修</h3>
+                    <p class="text-xs text-accent-yellow mb-6 font-medium">「使える」スキルを身につける実践型研修</p>
+                    <p class="text-sm text-gray-600 mb-8 leading-relaxed">初心者向けの基礎の内容から実践的なワークまで。座学だけでなく、実際に手を動かしながら「明日から使える」スキルを習得します。</p>
+                    <ul class="text-sm space-y-3 mb-8 font-medium">
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 生成AI基礎講座（リテラシー・リスク）</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 業務効率化ワーク</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> プロンプトエンジニアリング実践</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> AI活用マネジメント</li>
+                    </ul>
+                </div>
+                <div class="p-8 pt-0">
+                    <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="block w-full text-center py-3 bg-accent-yellow text-white rounded-lg font-bold btn-hover">研修について相談する</a>
+                </div>
+            </div>
+            <!-- Service 3 -->
+            <div class="border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col bg-white">
+                <div class="bg-blue-400 h-2 w-full"></div>
+                <div class="p-8 flex-grow">
+                    <span class="text-xs text-gray-400 font-bold mb-3 block tracking-wider uppercase tracking-widest">Service 03</span>
+                    <h3 class="text-xl font-bold text-main-green mb-3">AI顧問</h3>
+                    <p class="text-xs text-gray-500 mb-6 font-medium">月次の相談 ＋ 改善提案で現場に定着</p>
+                    <p class="text-sm text-gray-600 mb-8 leading-relaxed">「一度導入して終わり」ではなく、継続的に伴走. 最新情報のキャッチアップや、現場で発生する具体的な課題の解決をサポートします。</p>
+                    <ul class="text-sm space-y-3 mb-8 font-medium">
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 施策のロードマップ作成</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> プロンプト・業務フロー整備</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 社内定着の運用改善</li>
+                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 最新AIツールの情報提供・検証</li>
+                    </ul>
+                </div>
+                <div class="p-8 pt-0">
+                    <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="block w-full text-center py-3 bg-blue-400 text-white rounded-lg font-bold btn-hover">顧問契約について相談する</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Process Section（導入支援の進め方） -->
+<section id="process" class="bg-soft-gray py-20 md:py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-2xl md:text-4xl font-bold text-center text-main-green">
+      導入支援の進め方
+    </h2>
+
+    <!-- Desktop（PC：各ステップを「番号＋カード」で1カラム化。矢印はカード中央に固定） -->
+    <div class="hidden lg:flex justify-center mt-12">
+      <!-- 全体幅を少し小さくして左右余白を確保 -->
+      <div class="w-full max-w-[1120px] px-6">
+        <div class="grid items-start justify-center
+                    grid-cols-[240px_36px_240px_36px_240px_36px_240px]">
+
+          <!-- ===== Step 01 ===== -->
+          <div class="flex flex-col items-center">
+            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+              <span class="text-accent-yellow font-bold text-3xl tracking-wider">01</span>
+            </div>
+
+            <!-- ★間隔を詰める（mt-6 → mt-3） -->
+            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
+              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
+                ヒアリング<br>現状分析
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                貴社の業務内容、課題、AI活用の目的を詳しくお伺いします。
+              </p>
+            </div>
+          </div>
+
+          <!-- Arrow 01 -> 02（カード中央高さに合わせる） -->
+          <div class="flex flex-col items-center">
+            <!-- ★番号(高さh-16)＋間隔(mt-3相当)ぶんをスペーサーにする -->
+            <div class="h-[76px]"></div>
+            <div class="h-[240px] flex items-center justify-center" aria-hidden="true">
+              <span class="text-4xl text-gray-400 leading-none">＞</span>
+            </div>
+          </div>
+
+          <!-- ===== Step 02 ===== -->
+          <div class="flex flex-col items-center">
+            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+              <span class="text-accent-yellow font-bold text-3xl tracking-wider">02</span>
+            </div>
+
+            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
+              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
+                プランの<br>ご提案
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                課題解決に最適な導入ステップや研修カリキュラムをご提案します。
+              </p>
+            </div>
+          </div>
+
+          <!-- Arrow 02 -> 03 -->
+          <div class="flex flex-col items-center">
+            <div class="h-[76px]"></div>
+            <div class="h-[240px] flex items-center justify-center" aria-hidden="true">
+              <span class="text-4xl text-gray-400 leading-none">＞</span>
+            </div>
+          </div>
+
+          <!-- ===== Step 03 ===== -->
+          <div class="flex flex-col items-center">
+            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+              <span class="text-accent-yellow font-bold text-3xl tracking-wider">03</span>
+            </div>
+
+            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
+              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
+                本格導入<br>研修実施
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                社員の方へ研修を実施し、ガイドライン整備から全社的な導入までを進めます。
+              </p>
+            </div>
+          </div>
+
+          <!-- Arrow 03 -> 04 -->
+          <div class="flex flex-col items-center">
+            <div class="h-[76px]"></div>
+            <div class="h-[240px] flex items-center justify-center" aria-hidden="true">
+              <span class="text-4xl text-gray-400 leading-none">＞</span>
+            </div>
+          </div>
+
+          <!-- ===== Step 04 ===== -->
+          <div class="flex flex-col items-center">
+            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+              <span class="text-accent-yellow font-bold text-3xl tracking-wider">04</span>
+            </div>
+
+            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
+              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
+                運用・定着<br>サポート
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                定期的なフォローアップを行い、運用の改善と定着を支援します。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile / Tablet（スマホ：縦並び。番号⇔カードの間隔も少し詰める） -->
+    <div class="lg:hidden mt-12 max-w-xl mx-auto">
+      <div class="space-y-6">
+
+        <!-- Step 01 -->
+        <div class="text-center">
+          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+            <span class="text-accent-yellow font-bold text-2xl tracking-wider">01</span>
+          </div>
+          <!-- ★間隔を詰める（mt-5 → mt-3） -->
+          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
+            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
+              ヒアリング<br>現状分析
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              貴社の業務内容、課題、AI活用の目的を詳しくお伺いします。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center" aria-hidden="true">
+          <span class="text-4xl text-gray-400 leading-none rotate-90">＞</span>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="text-center">
+          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+            <span class="text-accent-yellow font-bold text-2xl tracking-wider">02</span>
+          </div>
+          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
+            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
+              プランの<br>ご提案
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              課題解決に最適な導入ステップや研修カリキュラムをご提案します。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center" aria-hidden="true">
+          <span class="text-4xl text-gray-400 leading-none rotate-90">＞</span>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="text-center">
+          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+            <span class="text-accent-yellow font-bold text-2xl tracking-wider">03</span>
+          </div>
+          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
+            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
+              本格導入<br>研修実施
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              社員の方へ研修を実施し、ガイドライン整備から全社的な導入までを進めます。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center" aria-hidden="true">
+          <span class="text-4xl text-gray-400 leading-none rotate-90">＞</span>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="text-center">
+          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
+            <span class="text-accent-yellow font-bold text-2xl tracking-wider">04</span>
+          </div>
+          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
+            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
+              運用・定着<br>サポート
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              定期的なフォローアップを行い、運用の改善と定着を支援します。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="bg-soft-gray py-20 md:py-24 px-6">
+        <div class="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-3xl shadow-sm flex flex-col md:flex-row items-center gap-10 md:gap-12 border border-gray-100">
+            <div class="w-48 h-48 md:w-56 md:h-56 bg-gray-100 rounded-full overflow-hidden flex-shrink-0 border-4 border-white shadow-md">
+                <!-- プロフィール画像（PNG形式を使用するように更新しました） -->
+                <img src="profile_square_1024.png" alt="Miwako Kato" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x400?text=Miwako+Kato';">
+            </div>
+            <div class="text-center md:text-left">
+                <p class="text-accent-yellow font-bold text-xs mb-3 tracking-widest uppercase">Profile</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-main-green mb-6">iroai 代表 <br class="md:hidden"> <span class="text-2xl ml-0 md:ml-2">Miwako Kato</span></h2>
+                <p class="text-sm md:text-base text-gray-600 font-medium mb-8 leading-relaxed italic">「テクノロジーを、もっと身近に、もっと優しく」をモットーにAI導入・研修・伴走支援を行っています。</p>
+                <div class="text-sm text-gray-700 leading-loose space-y-5 font-medium">
+                    <p>AIは魔法の杖ではありませんが、正しく使えば強力なパートナーになります。難しい専門用語を使わず、現場の方々が「これなら使える！」と思えるような、わかりやすく実践的なサポートを心がけています。</p>
+                    <p>企業のDX推進だけでなく、働く一人ひとりのスキルアップと自信につなげることを大切にしています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section（追加：緑のフッター(Contact CTA)の直前） -->
+    <style>
+        /* FAQセクション内だけの表示調整（他セクションには影響しません） */
+        #faq details summary { list-style: none; }
+        #faq details summary::-webkit-details-marker { display: none; }
+        #faq .faq-chevron { transition: transform 0.2s ease; }
+        #faq details[open] .faq-chevron { transform: rotate(180deg); }
+
+        /* 開いている項目だけ枠を出す（スクショ寄り） */
+        #faq details { border-bottom: 1px solid var(--border-soft); }
+        #faq details[open] {
+            border: 2px solid rgba(3, 104, 25, 0.55);
+            border-radius: 14px;
+            padding: 18px 18px;
+            margin: 12px 0;
+            background: transparent;
+        }
+        #faq details[open] + details { border-top: 1px solid transparent; }
+        #faq details[open] summary { padding-bottom: 10px; }
+    </style>
+    <section id="faq" class="bg-soft-gray py-20 md:py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-main-green mb-12 md:mb-14">よくあるご質問</h2>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Q1 -->
+                <details class="py-6">
+                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
+                        <span>AIについて全く知識がありませんが大丈夫ですか？</span>
+                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
+                        はい、全く問題ありません。専門用語を使わず、基礎から丁寧に解説いたしますのでご安心ください。
+                    </div>
+                </details>
+
+                <!-- Q2 -->
+                <details class="py-6">
+                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
+                        <span>オンラインでの研修は可能ですか？</span>
+                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
+                        はい、Zoom等を使用したオンライン研修も可能です。全国どこからでもご依頼いただけます。
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details class="py-6">
+                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
+                        <span>少人数でも依頼できますか？</span>
+                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
+                        はい、数名のチーム単位から全社研修まで幅広く対応しております。お気軽にご相談ください。
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details class="py-6">
+                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
+                        <span>セキュリティ面が心配です。</span>
+                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
+                        企業利用におけるセキュリティリスクや対策についても、研修やガイドライン策定の中でしっかりとお伝えいたします。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="bg-main-green py-20 md:py-24 px-6 text-center text-white relative overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl md:text-4xl font-bold mb-6">まずは、お気軽にご相談ください</h2>
+            <p class="text-sm md:text-base mb-12 opacity-90 leading-relaxed">
+                AI導入に関するお悩み、研修のご相談など、<br class="hidden md:block">
+                どんな些細なことでも構いません。
+            </p>
+            <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="inline-block bg-accent-yellow text-white px-10 md:px-12 py-4 rounded-full text-lg font-bold shadow-lg btn-hover mb-12 md:mb-16">
+                お問い合わせはこちら ＞
+            </a>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-sm font-medium opacity-90">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    ai.color.glass@gmail.com
+                </div>
+                <a href="https://lit.link/iroai_ai" target="_blank" class="flex items-center hover:text-accent-yellow transition border-b border-transparent hover:border-accent-yellow pb-1">
+                    <svg class="w-5 h-5 mr-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    Lit.Link
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-10 mb-10 text-center md:text-left">
+                <div class="text-2xl font-bold mb-8 md:mb-0 tracking-tight text-white font-bold">iroai</div>
+                <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium text-gray-400">
+                    <a href="#features" class="hover:text-white transition">特長</a>
+                    <a href="#services" class="hover:text-white transition">サービス</a>
+                    <a href="#profile" class="hover:text-white transition">プロフィール</a>
+                    <a href="#" class="hover:text-white transition">プライバシーポリシー</a>
+                </div>
+            </div>
+            <div class="text-center">
+                <p class="text-[10px] md:text-xs text-gray-500 tracking-wider">© 2026 iroai - Miwako Kato. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉制御
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.toggle('open');
+            
+            // アイコンの切り替え（三本線 ↔ バツ印）
+            if (isOpen) {
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+                menuIcon.classList.add('rotate-90');
+            } else {
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />';
+                menuIcon.classList.remove('rotate-90');
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // メニュー項目をクリックしたらメニューを閉じる
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
