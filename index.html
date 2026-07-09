@@ -4,680 +4,1159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iroai - 導入で終わらせない、成果が続くAI活用へ</title>
-<meta name="description" content="導入〜運用〜定着まで伴走。研修で終わらせず、現場で使われ続けるAI活用の仕組みを整えます。">
+    <meta name="description" content="導入〜運用〜定着まで伴走。研修で終わらせず、現場で使われ続けるAI活用の仕組みを整えます。まずは30分の無料相談から。">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="iroai">
-<meta property="og:title" content="iroai｜成果が続くAI活用へ">
-<meta property="og:description" content="導入〜運用〜定着まで伴走。研修で終わらせず、現場で使われ続けるAI活用の仕組みを整えます。">
-<meta property="og:url" content="https://iroai-lab.com/">
-<meta property="og:image" content="https://iroai-lab.com/ogp.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="iroai">
+    <meta property="og:title" content="iroai｜成果が続くAI活用へ">
+    <meta property="og:description" content="導入〜運用〜定着まで伴走。研修で終わらせず、現場で使われ続けるAI活用の仕組みを整えます。">
+    <meta property="og:url" content="https://iroai-lab.com/">
+    <meta property="og:image" content="https://iroai-lab.com/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
 
-<meta name="twitter:card" content="summary_large_image">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Noto Sans JP + Noto Serif JP -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
     <style>
-        /* 添付スクショに合わせた色/フォント定義 */
+        /* ============================================
+           iroai ブランドカラー（セミナースライドと共通）
+           ============================================ */
         :root {
-            --main-green: #036819;
-            --accent-yellow: #F0BB3B;
-            --accent-blue: #2B73FF;
-            --bg-soft-gray: #F8FEF8;
-            --text-base: #364C38;
-            --text-muted: #607A60;
-            --text-light: #7A907A;
-            --border-soft: #E0E6E1;
+            --sky: #33A9DC;        /* メイン */
+            --sky-deep: #176B93;   /* メイン濃 */
+            --sky-pale: #E5F5FC;   /* メイン淡 */
+            --yellow: #F5C518;     /* アクセント */
+            --yellow-pale: #FFF6D9;/* アクセント淡 */
+            --navy: #1F2A44;       /* 本文・見出し */
+            --navy-muted: #5B6B84; /* 補足文 */
+            --border: #D9E8F2;     /* 罫線 */
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 12px rgba(31, 42, 68, 0.06);
+            --shadow-md: 0 8px 28px rgba(31, 42, 68, 0.10);
+            --radius: 20px;
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-base);
-            scroll-behavior: smooth;
+            font-family: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+            color: var(--navy);
+            background: var(--white);
+            line-height: 1.8;
+            font-size: 16px;
+            overflow-wrap: anywhere;
         }
 
-        /* 見出し・ロゴは明朝寄り */
-        h1, h2, h3,
-        header .text-2xl,
-        footer .text-2xl {
-            font-family: 'Noto Serif JP', serif;
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- 共通パーツ ---------- */
+        .section { padding: 96px 0; }
+        .section--pale { background: var(--sky-pale); }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--sky-deep);
+            border-radius: 999px;
+            padding: 6px 20px;
+            margin-bottom: 16px;
         }
 
-        /* カスタムカラークラス */
-        .bg-main-green { background-color: var(--main-green); }
-        .text-main-green { color: var(--main-green); }
-        .bg-accent-yellow { background-color: var(--accent-yellow); }
-        .text-accent-yellow { color: var(--accent-yellow); }
-        .border-accent-yellow { border-color: var(--accent-yellow); }
-        .bg-soft-gray { background-color: var(--bg-soft-gray); }
+        .section-title {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 900;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+        .section-lead {
+            color: var(--navy-muted);
+            font-size: 15px;
+            max-width: 720px;
+            margin: 0 auto 56px;
+        }
+        .text-center { text-align: center; }
+        @media (max-width: 820px) { .pc-only { display: none; } }
 
-        /* 元コード内の typo クラス（色だけ反映） */
-        .bg-bg-soft-gray { background-color: var(--bg-soft-gray); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 16px 36px;
+            font-size: 16px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            cursor: pointer;
+        }
+        .btn--primary {
+            background: var(--yellow);
+            color: var(--navy);
+            box-shadow: 0 6px 20px rgba(245, 197, 24, 0.35);
+        }
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 26px rgba(245, 197, 24, 0.45);
+        }
+        .btn--ghost {
+            background: var(--white);
+            color: var(--sky-deep);
+            border: 1.5px solid var(--border);
+        }
+        .btn--ghost:hover { background: var(--sky-pale); }
+        .btn--sky {
+            background: var(--sky);
+            color: var(--white);
+        }
+        .btn--sky:hover { background: var(--sky-deep); }
 
-        /* Tailwindの灰色系を“グレーグリーン”に寄せる（色だけ上書き） */
-        .text-gray-600 { color: var(--text-muted) !important; }
-        .text-gray-500 { color: var(--text-muted) !important; }
-        .text-gray-400 { color: var(--text-light) !important; }
-        .text-gray-700 { color: var(--text-base) !important; }
+        /* ---------- スクロール表示アニメーション ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal[data-delay="1"] { transition-delay: 0.12s; }
+        .reveal[data-delay="2"] { transition-delay: 0.24s; }
+        .reveal[data-delay="3"] { transition-delay: 0.36s; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
 
-        .border-gray-100 { border-color: var(--border-soft) !important; }
-        .border-gray-200 { border-color: var(--border-soft) !important; }
+        /* ============================================
+           ヘッダー
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .header.is-scrolled {
+            border-bottom-color: var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .header__inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header__logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            color: var(--sky-deep);
+        }
+        .header__logo span { color: var(--yellow); }
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .header__nav a:not(.btn):hover { color: var(--sky-deep); }
+        .header__nav .btn { padding: 10px 22px; font-size: 14px; }
+        .header__toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--navy);
+        }
+        .mobile-menu {
+            display: none;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 24px 20px;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 12px 4px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--sky-pale);
+        }
+        .mobile-menu .btn { margin-top: 16px; width: 100%; }
 
-        .bg-gray-50 { background-color: var(--bg-soft-gray) !important; }
-        .bg-gray-100 { background-color: var(--bg-soft-gray) !important; }
+        @media (max-width: 820px) {
+            .header__nav { display: none; }
+            .header__toggle { display: block; }
+        }
 
-        /* ヘッダー/モバイルメニューだけ背景をミントに（カードの白は維持） */
-        header.bg-white { background-color: var(--bg-soft-gray) !important; }
-        #mobile-menu.bg-white { background-color: var(--bg-soft-gray) !important; }
-
-        /* Service03の青（スクショ寄り） */
-        .bg-blue-400 { background-color: var(--accent-blue) !important; }
-
-        /* ボタンホバー時のスタイル調整 */
-        .btn-hover:hover { opacity: 0.9; transition: opacity 0.2s; }
-
-        /* モバイルメニュー表示・非表示アニメーション用 */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            max-height: 0;
+        /* ============================================
+           ヒーロー
+           ============================================ */
+        .hero {
+            position: relative;
+            padding: 168px 24px 110px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--sky-pale) 0%, rgba(229, 245, 252, 0.4) 70%, var(--white) 100%);
             overflow: hidden;
         }
-        #mobile-menu.open {
-            max-height: 400px;
-            border-bottom: 1px solid #f3f4f6;
+        .hero__blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            pointer-events: none;
+        }
+        .hero__blob--1 {
+            width: 340px; height: 340px;
+            background: radial-gradient(circle, rgba(51, 169, 220, 0.18), transparent 70%);
+            top: -60px; left: -80px;
+        }
+        .hero__blob--2 {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(245, 197, 24, 0.16), transparent 70%);
+            bottom: -140px; right: -120px;
+        }
+        .hero__blob--3 {
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(23, 107, 147, 0.10), transparent 70%);
+            top: 120px; right: 8%;
+        }
+        .hero__inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+        .hero__badge {
+            display: inline-block;
+            background: var(--sky-deep);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            border-radius: 999px;
+            padding: 8px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 14px rgba(23, 107, 147, 0.3);
+        }
+        .hero__title {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 900;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+            margin-bottom: 24px;
+        }
+        .hero__title .marker {
+            background: linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 92%, transparent 92%);
+            padding: 0 2px;
+        }
+        .hero__lead {
+            color: var(--navy-muted);
+            font-size: clamp(14px, 2vw, 16px);
+            max-width: 680px;
+            margin: 0 auto 40px;
+        }
+        .hero__card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 32px 36px;
+            max-width: 620px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+        .hero__card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .hero__card li + li { margin-top: 18px; }
+        .hero__card .check {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--yellow-pale);
+            color: var(--sky-deep);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .hero__note {
+            font-size: 12.5px;
+            color: var(--navy-muted);
+        }
+
+        /* ============================================
+           お悩みセクション
+           ============================================ */
+        .cards-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        @media (max-width: 820px) { .cards-3 { grid-template-columns: 1fr; } }
+
+        .problem-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 30px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .problem-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .problem-card__num {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--sky-pale);
+            color: var(--sky-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .problem-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .problem-card p { font-size: 14px; color: var(--navy-muted); }
+
+        .solution-box {
+            margin-top: 56px;
+            background: var(--sky-pale);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            text-align: center;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .solution-box p { font-weight: 500; font-size: 15.5px; }
+        .solution-box .strong {
+            color: var(--sky-deep);
+            font-weight: 900;
+            font-size: 1.25em;
+            background: linear-gradient(transparent 65%, var(--yellow) 65%, var(--yellow) 95%, transparent 95%);
+            padding: 0 2px;
+        }
+
+        /* ============================================
+           使うAIから任せるAIへ（フェーズ）
+           ============================================ */
+        .phase-cards {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr 40px 1.15fr;
+            gap: 0;
+            align-items: stretch;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        .phase-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px 26px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .phase-card__era {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--navy-muted);
+            background: var(--sky-pale);
+            border-radius: 999px;
+            padding: 3px 14px;
+            margin-bottom: 14px;
+        }
+        .phase-card h3 { font-size: 20px; font-weight: 900; margin-bottom: 10px; }
+        .phase-card p { font-size: 13.5px; color: var(--navy-muted); text-align: left; }
+        .phase-card--now {
+            border: 2px solid var(--yellow);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(180deg, var(--yellow-pale) 0%, var(--white) 45%);
+        }
+        .phase-card--now .phase-card__era {
+            background: var(--yellow);
+            color: var(--navy);
+        }
+        .phase-card--now h3 { color: var(--sky-deep); }
+        .phase-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sky);
+            font-size: 26px;
+            font-weight: 900;
+        }
+        .phase-note {
+            max-width: 780px;
+            margin: 48px auto 0;
+            background: var(--white);
+            border-left: 5px solid var(--sky);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            padding: 28px 32px;
+            text-align: left;
+        }
+        .phase-note p { font-size: 14.5px; color: var(--navy-muted); }
+        .phase-note p + p { margin-top: 12px; }
+        .phase-note .strong { color: var(--navy); font-weight: 700; }
+        @media (max-width: 820px) {
+            .phase-cards { grid-template-columns: 1fr; max-width: 440px; }
+            .phase-arrow { transform: rotate(90deg); padding: 6px 0; }
+        }
+
+        /* ============================================
+           Why iroai
+           ============================================ */
+        .why-item { text-align: center; }
+        .why-item__icon {
+            width: 96px; height: 96px;
+            border-radius: 50%;
+            background: var(--sky-pale);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--sky);
+        }
+        .why-item__icon svg { width: 46px; height: 46px; }
+        .why-item h3 { font-size: 22px; font-weight: 900; margin-bottom: 14px; letter-spacing: 0.01em; }
+        .why-item h3 .num { color: var(--yellow); font-size: 13px; font-weight: 900; letter-spacing: 0.2em; display: block; margin-bottom: 6px; }
+        .why-item p { font-size: 14px; color: var(--navy-muted); text-align: left; }
+
+        /* ============================================
+           サービス
+           ============================================ */
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .service-card__bar { height: 8px; background: var(--sky); }
+        .service-card--featured { border: 2px solid var(--yellow); box-shadow: var(--shadow-md); }
+        .service-card--featured .service-card__bar { background: var(--yellow); }
+        .service-card__body { padding: 32px 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .service-card__no {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: var(--sky-deep);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .service-card--featured .service-card__no::after {
+            content: "おすすめ";
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--navy);
+            border-radius: 999px;
+            font-size: 10.5px;
+            letter-spacing: 0.08em;
+            padding: 2px 12px;
+            margin-left: 10px;
+            vertical-align: 1px;
+        }
+        .service-card h3 { font-size: 21px; font-weight: 900; margin-bottom: 6px; }
+        .service-card__tag { font-size: 12.5px; color: var(--sky-deep); font-weight: 700; margin-bottom: 16px; }
+        .service-card__desc { font-size: 14px; color: var(--navy-muted); margin-bottom: 22px; }
+        .service-card ul { margin-bottom: 26px; }
+        .service-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .service-card li + li { margin-top: 10px; }
+        .service-card li::before {
+            content: "";
+            flex-shrink: 0;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--yellow);
+            margin-top: 10px;
+        }
+        .service-card .btn { margin-top: auto; width: 100%; font-size: 14.5px; padding: 14px 20px; }
+
+        /* ============================================
+           導入の進め方
+           ============================================ */
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            position: relative;
+        }
+        .process-step {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 34px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .process-step__num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: var(--sky);
+            color: var(--white);
+            font-weight: 900;
+            font-size: 19px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(51, 169, 220, 0.35);
+        }
+        .process-step h3 { font-size: 17px; font-weight: 700; line-height: 1.5; margin-bottom: 12px; }
+        .process-step p { font-size: 13.5px; color: var(--navy-muted); text-align: left; }
+        .process-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -17px;
+            width: 12px; height: 12px;
+            border-top: 3px solid var(--sky);
+            border-right: 3px solid var(--sky);
+            transform: translateY(-50%) rotate(45deg);
+        }
+        @media (max-width: 820px) {
+            .process { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 30px; }
+            .process-step:not(:last-child)::after {
+                top: auto;
+                bottom: -18px;
+                right: 50%;
+                transform: translateX(50%) rotate(135deg);
+            }
+        }
+
+        /* ============================================
+           プロフィール
+           ============================================ */
+        .profile-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow-sm);
+            padding: 56px;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .profile-card__photo {
+            width: 210px; height: 210px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 6px solid var(--sky-pale);
+            box-shadow: var(--shadow-md);
+        }
+        .profile-card__photo img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-card h2 { font-size: 26px; font-weight: 900; margin-bottom: 16px; }
+        .profile-card h2 small { font-size: 14px; font-weight: 700; color: var(--sky-deep); display: block; margin-bottom: 6px; letter-spacing: 0.12em; }
+        .profile-card__motto {
+            color: var(--sky-deep);
+            font-weight: 700;
+            font-size: 15.5px;
+            margin-bottom: 20px;
+        }
+        .profile-card__text p { font-size: 14.5px; color: var(--navy-muted); }
+        .profile-card__text p + p { margin-top: 14px; }
+        .profile-card__text p.profile-card__motto { color: var(--sky-deep); }
+        @media (max-width: 820px) {
+            .profile-card { flex-direction: column; padding: 40px 28px; text-align: center; }
+            .profile-card__photo { width: 170px; height: 170px; }
+            .profile-card__text p:not(.profile-card__motto) { text-align: left; }
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq-list { max-width: 780px; margin: 0 auto; }
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            transition: box-shadow 0.25s ease;
+        }
+        .faq-item[open] { box-shadow: var(--shadow-sm); border-color: var(--sky); }
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 24px;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary .q {
+            flex-shrink: 0;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--sky);
+            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 900;
+        }
+        .faq-item summary .chevron {
+            margin-left: auto;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+            color: var(--sky-deep);
+        }
+        .faq-item[open] summary .chevron { transform: rotate(180deg); }
+        .faq-item__answer {
+            padding: 0 24px 22px 68px;
+            font-size: 14.5px;
+            color: var(--navy-muted);
+        }
+        @media (max-width: 600px) {
+            .faq-item__answer { padding-left: 24px; }
+        }
+
+        /* ============================================
+           無料相談CTA
+           ============================================ */
+        .cta {
+            background: linear-gradient(135deg, var(--sky-deep) 0%, var(--sky) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before, .cta::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+            pointer-events: none;
+        }
+        .cta::before { width: 380px; height: 380px; top: -140px; left: -100px; }
+        .cta::after { width: 460px; height: 460px; bottom: -200px; right: -120px; }
+        .cta__inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+        .cta__badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            border-radius: 999px;
+            padding: 7px 24px;
+            margin-bottom: 24px;
+        }
+        .cta h2 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 900; line-height: 1.45; margin-bottom: 18px; }
+        .cta__lead { font-size: 15px; opacity: 0.92; margin-bottom: 40px; }
+        .cta .btn--primary { font-size: 17px; padding: 18px 48px; }
+        .cta__points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px 28px;
+            margin-top: 34px;
+            font-size: 13.5px;
+            font-weight: 700;
+        }
+        .cta__points span { display: inline-flex; align-items: center; gap: 7px; opacity: 0.95; }
+        .cta__points .dot { color: var(--yellow); font-weight: 900; }
+        .cta__mail {
+            margin-top: 44px;
+            font-size: 14px;
+            opacity: 0.9;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ============================================
+           フッター
+           ============================================ */
+        .footer { background: var(--navy); color: var(--white); padding: 56px 24px 40px; }
+        .footer__inner { max-width: 1120px; margin: 0 auto; }
+        .footer__top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding-bottom: 36px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        .footer__logo { font-size: 24px; font-weight: 900; }
+        .footer__logo span { color: var(--yellow); }
+        .footer__nav { display: flex; flex-wrap: wrap; gap: 24px; font-size: 13.5px; color: rgba(255, 255, 255, 0.75); }
+        .footer__nav a:hover { color: var(--white); }
+        .footer__copy { text-align: center; font-size: 11.5px; color: rgba(255, 255, 255, 0.55); letter-spacing: 0.08em; }
+        @media (max-width: 600px) {
+            .footer__top { flex-direction: column; text-align: center; justify-content: center; }
+            .footer__nav { justify-content: center; }
         }
     </style>
 </head>
-<body class="bg-white">
+<body>
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm border-b border-gray-100">
-        <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
-            <div class="text-2xl font-bold text-main-green tracking-tight font-bold">iroai</div>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-600">
-                <a href="#features" class="hover:text-main-green transition font-bold">特長</a>
-                <a href="#services" class="hover:text-main-green transition font-bold">サービス</a>
-                <a href="#profile" class="hover:text-main-green transition font-bold">プロフィール</a>
-                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="bg-accent-yellow text-white px-6 py-2.5 rounded-full btn-hover">お問い合わせ</a>
+    <header class="header" id="header">
+        <div class="header__inner">
+            <a href="#" class="header__logo">iroai<span>.</span></a>
+            <nav class="header__nav">
+                <a href="#features">特長</a>
+                <a href="#services">サービス</a>
+                <a href="#process">進め方</a>
+                <a href="#profile">プロフィール</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--primary">30分無料相談</a>
             </nav>
-
-            <!-- Mobile Menu Toggle Button -->
-            <button id="menu-toggle" class="md:hidden text-main-green p-2 focus:outline-none">
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            <button class="header__toggle" id="menu-toggle" aria-label="メニューを開閉" aria-expanded="false">
+                <svg id="menu-icon" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
-
-        <!-- Mobile Navigation Menu -->
-        <nav id="mobile-menu" class="md:hidden bg-white text-center">
-            <div class="flex flex-col space-y-4 py-6 px-6 text-gray-600 font-bold">
-                <a href="#features" class="mobile-link py-2 hover:text-main-green">特長</a>
-                <a href="#services" class="mobile-link py-2 hover:text-main-green">サービス</a>
-                <a href="#profile" class="mobile-link py-2 hover:text-main-green">プロフィール</a>
-                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="bg-accent-yellow text-white px-6 py-3 rounded-full btn-hover">お問い合わせ</a>
-            </div>
-        </nav>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#features" class="mobile-link">特長</a>
+            <a href="#services" class="mobile-link">サービス</a>
+            <a href="#process" class="mobile-link">進め方</a>
+            <a href="#profile" class="mobile-link">プロフィール</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--primary">30分無料相談を申し込む</a>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-6 bg-soft-gray text-center overflow-hidden">
-        <div class="max-w-4xl mx-auto">
-            <!-- Tag -->
-            <div class="inline-block bg-white border border-gray-200 text-main-green text-[10px] md:text-xs px-4 py-1.5 rounded-full mb-6 font-bold tracking-wider shadow-sm">
-                AI導入支援 / AI研修 / AI顧問
-            </div>
-            <!-- Main Title -->
-           <h1 class="text-4xl md:text-6xl font-bold mb-6 text-main-green">
-  導入で終わらせない
-  <span class="block mt-3 md:mt-4">
-    <span class="text-accent-yellow">成果が続く</span> AI活用へ
-  </span>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="hero__blob hero__blob--3"></div>
+        <div class="hero__inner">
+            <div class="hero__badge">生成AI活用から、AIエージェント導入まで</div>
+            <h1 class="hero__title">
+                導入で終わらせない、<br>
+                <span class="marker">成果が続く</span>AI活用へ
             </h1>
-            <!-- Sub Title -->
-            <p class="text-sm md:text-base text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed px-4">
-                導入〜運用〜定着まで伴走し、成果が出続ける仕組みに整えます。
+            <p class="hero__lead">
+                ツールを入れて終わり、にしない。<br>
+                iroaiは導入から運用・定着まで伴走し、現場で"使われ続ける"仕組みを整えます。<br>
+                その先のAIエージェント活用まで、貴社のペースで一緒に進みます。
             </p>
-            
-            <!-- Checklist Box -->
-            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto text-left mb-10">
-                <ul class="space-y-4 font-medium text-sm md:text-base">
-                    <li class="flex items-start">
-                        <span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-accent-yellow text-sm font-bold"
-      style="background-color: rgba(240, 187, 59, 0.22);">
-  ✓
-</span>
-                        <span>現場の業務を棚卸し、改善テーマを特定</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-accent-yellow text-sm font-bold"
-      style="background-color: rgba(240, 187, 59, 0.22);">
-  ✓
-</span>
-                        <span>研修で終わらず、社内定着まで伴走</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full text-accent-yellow text-sm font-bold"
-      style="background-color: rgba(240, 187, 59, 0.22);">
-  ✓
-</span>
-                        <span>小さく始めて効果を検証 →自動化/内製化へ</span>
-                    </li>
+            <div class="hero__card">
+                <ul>
+                    <li><span class="check">✓</span><span>現場の業務を棚卸しし、効果の出る改善テーマを特定</span></li>
+                    <li><span class="check">✓</span><span>研修で終わらせず、社内に定着するまで伴走</span></li>
+                    <li><span class="check">✓</span><span>小さく始めて効果を検証し、自動化・内製化へ</span></li>
                 </ul>
             </div>
+            <div class="hero__actions">
+                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--primary">30分無料相談を申し込む →</a>
+                <a href="#services" class="btn btn--ghost">サービスを見る</a>
+            </div>
+            <p class="hero__note">相談は無料・オンライン30分。無理な営業は一切ありません。</p>
+        </div>
+    </section>
 
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center gap-4 px-6 md:px-0">
-                <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="bg-accent-yellow text-white px-10 py-4 rounded-full font-bold shadow-md btn-hover">無料で相談する ＞</a>
-                <a href="#services" class="bg-white border border-gray-200 text-main-green px-10 py-4 rounded-full font-bold hover:bg-gray-50 transition">サービスを見る</a>
+    <!-- Problems -->
+    <section class="section section--white">
+        <div class="container text-center">
+            <span class="section-label">Problems</span>
+            <h2 class="section-title">こんなお悩み、ありませんか？</h2>
+            <p class="section-lead">AI導入の必要性は感じているものの、「現場への定着」に課題を感じている企業様が増えています。</p>
+            <div class="cards-3">
+                <div class="problem-card reveal" style="text-align: left;">
+                    <div class="problem-card__num">1</div>
+                    <h3>導入したのに、使われない</h3>
+                    <p>ChatGPTなどのツールを契約したものの、一部の社員しか使っておらず、費用対効果が見えない。</p>
+                </div>
+                <div class="problem-card reveal" data-delay="1" style="text-align: left;">
+                    <div class="problem-card__num">2</div>
+                    <h3>社内に教えられる人がいない</h3>
+                    <p>詳しい人材がおらず、体系的な教育ができない。独学では限界を感じている。</p>
+                </div>
+                <div class="problem-card reveal" data-delay="2" style="text-align: left;">
+                    <div class="problem-card__num">3</div>
+                    <h3>業務への活かし方がわからない</h3>
+                    <p>「すごい」とは聞くけれど、自社のどの業務に、どう使えばいいのかイメージが湧かない。</p>
+                </div>
+            </div>
+            <div class="solution-box reveal">
+                <p>iroaiは、<span class="strong">「現場への定着」</span>をゴールに、<br>
+                初心者にもわかりやすい研修と、実務に即した導入支援でお応えします。</p>
             </div>
         </div>
     </section>
 
-    <!-- Problems Section -->
-    <section class="py-20 md:py-24 px-6 max-w-7xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-main-green mb-4 px-2">こんなお悩みありませんか？</h2>
-        <p class="text-center text-gray-500 mb-12 md:mb-16 text-sm md:text-base">AI導入の必要性は感じているものの、現場での定着に課題を感じている企業様が増えています。</p>
-        
-        <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
-            <!-- Card 1 -->
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <div class="w-12 h-12 bg-bg-soft-gray text-main-green rounded-full flex items-center justify-center font-bold mb-6 text-lg border border-gray-200">1</div>
-                <h3 class="text-lg font-bold text-main-green mb-3">導入したけど使われない</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">ChatGPT等のツールを契約したが、一部の社員しか使っておらず、費用対効果が見えない。</p>
+    <!-- Phase: 使うAIから任せるAIへ -->
+    <section id="phase" class="section section--pale">
+        <div class="container text-center">
+            <span class="section-label">Next Stage</span>
+            <h2 class="section-title">AIの活用は、"使う"から<span style="white-space: nowrap;">"任せる"</span>へ</h2>
+            <p class="section-lead">ChatGPTを「使う」段階の先に、目標を与えると自律的に業務を進めてくれる<br class="pc-only">「AIエージェント」の時代が始まっています。</p>
+            <div class="phase-cards">
+                <div class="phase-card reveal">
+                    <span class="phase-card__era">〜2022</span>
+                    <h3>作るAI</h3>
+                    <p>専門家が開発するもので、一般のビジネスパーソンには縁遠い存在だった時代。</p>
+                </div>
+                <div class="phase-arrow reveal" aria-hidden="true">›</div>
+                <div class="phase-card reveal" data-delay="1">
+                    <span class="phase-card__era">いま</span>
+                    <h3>使うAI</h3>
+                    <p>ChatGPTなどの生成AIを、誰もが道具として使える時代。多くの企業はこの段階の途上にあります。</p>
+                </div>
+                <div class="phase-arrow reveal" data-delay="1" aria-hidden="true">›</div>
+                <div class="phase-card phase-card--now reveal" data-delay="2">
+                    <span class="phase-card__era">これから</span>
+                    <h3>任せるAI</h3>
+                    <p>目標を与えると、AIが自律的に段取りを組んで業務を進める「AIエージェント」の時代。問い合わせ対応や書類処理など、"任せられる業務"から自動化が始まっています。</p>
+                </div>
             </div>
-            <!-- Card 2 -->
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <div class="w-12 h-12 bg-bg-soft-gray text-main-green rounded-full flex items-center justify-center font-bold mb-6 text-lg border border-gray-200">2</div>
-                <h3 class="text-lg font-bold text-main-green mb-3">教えられる人がいない</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">社内に詳しい人材がおらず、体系的な教育ができない。独学では限界を感じている。</p>
+            <div class="phase-note reveal">
+                <p>一方で、生成AIを導入した企業の多くが「期待した成果が出ていない」と言われます。その原因の多くは、AIの性能ではなく、<span class="strong">「どの業務に入れるか」「現場が使い続けられるか」</span>という業務と組織の側にあります。</p>
+                <p>だからこそ、ツールの使い方を覚えるだけでなく、<span class="strong">業務を整理し、組織にAIを根付かせる設計</span>が必要です。iroaiは、いま生成AIに慣れることから、将来のAIエージェント導入まで、貴社の段階に合わせて伴走します。</p>
             </div>
-            <!-- Card 3 -->
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <div class="w-12 h-12 bg-bg-soft-gray text-main-green rounded-full flex items-center justify-center font-bold mb-6 text-lg border border-gray-200">3</div>
-                <h3 class="text-lg font-bold text-main-green mb-3">業務への活かし方が不明</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">「すごい」とは聞くが、自社の具体的な業務のどこにどう使えるのかイメージが湧かない。</p>
-            </div>
-        </div>
-
-        <!-- Solution Box -->
-        <div class="bg-soft-gray border border-gray-100 p-8 rounded-2xl text-center max-w-3xl mx-auto">
-            <p class="text-main-green font-medium leading-relaxed text-sm md:text-base px-2">
-                iroaiは、<span class="text-accent-yellow font-bold text-lg md:text-xl">「現場への定着」</span>をゴールに、<br class="hidden md:block">
-                初心者にもわかりやすい研修と、実務に即した導入支援を提供します。
-            </p>
         </div>
     </section>
 
-    <!-- Why Section -->
-    <section id="features" class="bg-soft-gray py-20 md:py-24 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-accent-yellow font-bold text-xs mb-3 tracking-widest uppercase">Why iroai</p>
-            <h2 class="text-2xl md:text-3xl font-bold text-main-green mb-12 md:mb-16">選ばれる3つの理由</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Reason 1 -->
-                <div>
-                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-gray-100">
-                        <svg class="w-10 h-10 text-main-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+    <!-- Why iroai -->
+    <section id="features" class="section section--white">
+        <div class="container text-center">
+            <span class="section-label">Why iroai</span>
+            <h2 class="section-title">選ばれる3つの理由</h2>
+            <p class="section-lead">「わかりやすく伝える・業務に落とし込む・組織に根付かせる」。<br class="pc-only">AIが定着するまでの3つの壁に、iroaiは全部で向き合います。</p>
+            <div class="cards-3">
+                <div class="why-item reveal">
+                    <div class="why-item__icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z"></path></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-4 text-main-green">初心者目線のわかりやすさ</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed px-4 md:px-0">専門用語を極力使わず、ITに苦手意識のある方でも「わかった！」「できた！」を実感できる丁寧な指導を心がけています。</p>
+                    <h3><span class="num">REASON 01</span>初心者目線のわかりやすさ</h3>
+                    <p>専門用語を極力使わず、ITに苦手意識のある方でも「わかった！」「できた！」を実感できる丁寧な指導を心がけています。</p>
                 </div>
-                <!-- Reason 2 -->
-                <div>
-                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-gray-100">
-                        <svg class="w-10 h-10 text-main-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div class="why-item reveal" data-delay="1">
+                    <div class="why-item__icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-4 text-main-green">実務直結のカリキュラム</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed px-4 md:px-0">一般的な機能説明ではなく、「明日の業務でどう使うか」に焦点を当て、貴社の業務内容に合わせた実践的なワークを行います。</p>
+                    <h3><span class="num">REASON 02</span>業務に落とし込む設計力</h3>
+                    <p>一般的な機能説明ではなく、貴社の業務を棚卸しして「どの業務に、どこまでAIを任せるか」から設計。明日の業務でそのまま使える形に落とし込みます。</p>
                 </div>
-                <!-- Reason 3 -->
-                <div>
-                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-gray-100">
-                        <svg class="w-10 h-10 text-main-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <div class="why-item reveal" data-delay="2">
+                    <div class="why-item__icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z"></path></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-4 text-main-green">安心の伴走サポート</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed px-4 md:px-0">研修して終わりではありません。導入後の疑問解消やルールの策定など、自走できるまで親身にサポートします。</p>
+                    <h3><span class="num">REASON 03</span>組織に根付かせる伴走</h3>
+                    <p>研修して終わりではありません。導入後の疑問解消、社内ルールの策定、使われ続ける仕組みづくりまで、組織にAIが根付いて自走できるようになるまで親身にサポートします。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 md:py-24 px-6 max-w-7xl mx-auto">
-        <p class="text-center text-accent-yellow font-bold text-xs mb-3 tracking-widest uppercase">Services</p>
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-main-green mb-4">ご提供サービス</h2>
-        <p class="text-center text-gray-500 mb-12 md:mb-16 text-sm md:text-base">課題に合わせて、3つの柱でサポートします。</p>
-
-        <div class="grid md:grid-cols-3 gap-10 md:gap-8">
-            <!-- Service 1 -->
-            <div class="border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col bg-white">
-                <div class="bg-main-green h-2 w-full"></div>
-                <div class="p-8 flex-grow">
-                    <span class="text-xs text-gray-400 font-bold mb-3 block tracking-wider uppercase tracking-widest">Service 01</span>
-                    <h3 class="text-xl font-bold text-main-green mb-3">AI導入支援</h3>
-                    <p class="text-xs text-gray-500 mb-6 font-medium">組織へのAI導入をサポート</p>
-                    <p class="text-sm text-gray-600 mb-8 leading-relaxed">現状の業務フローを整理し、どこにAIを活用できるかを診断。ツールの選定からガイドライン策定、現場への定着までをサポートします。</p>
-                    <ul class="text-sm space-y-3 mb-8 font-medium">
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 現状業務のヒアリング</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 課題整理・優先順位づけ</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 効果検証</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 導入後の改善提案</li>
-                    </ul>
+    <!-- Services -->
+    <section id="services" class="section section--pale">
+        <div class="container text-center">
+            <span class="section-label">Services</span>
+            <h2 class="section-title">ご提供サービス</h2>
+            <p class="section-lead">課題とフェーズに合わせて、3つの柱でサポートします。</p>
+            <div class="cards-3" style="align-items: stretch; text-align: left;">
+                <div class="service-card reveal">
+                    <div class="service-card__bar"></div>
+                    <div class="service-card__body">
+                        <span class="service-card__no">Service 01</span>
+                        <h3>AI研修</h3>
+                        <p class="service-card__tag">「使える」スキルを身につける実践型研修</p>
+                        <p class="service-card__desc">初心者向けの基礎から実践的なワークまで。座学だけでなく、実際に手を動かしながら「明日から使える」スキルを習得します。</p>
+                        <ul>
+                            <li>生成AI基礎講座（リテラシー・リスク）</li>
+                            <li>業務効率化ワーク</li>
+                            <li>プロンプトエンジニアリング実践</li>
+                            <li>AI活用マネジメント</li>
+                        </ul>
+                        <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--sky">研修について相談する</a>
+                    </div>
                 </div>
-                <div class="p-8 pt-0">
-                    <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="block w-full text-center py-3 bg-main-green text-white rounded-lg font-bold btn-hover">導入について相談する</a>
+                <div class="service-card service-card--featured reveal" data-delay="1">
+                    <div class="service-card__bar"></div>
+                    <div class="service-card__body">
+                        <span class="service-card__no">Service 02</span>
+                        <h3>AI導入支援</h3>
+                        <p class="service-card__tag">組織へのAI導入を、診断から定着まで</p>
+                        <p class="service-card__desc">現状の業務フローを整理し、どこにAIを活用できるかを診断。AIエージェントに任せられる業務の選定も含め、ツール選定からガイドライン策定、現場への定着までをサポートします。</p>
+                        <ul>
+                            <li>現状業務のヒアリング・棚卸し</li>
+                            <li>課題整理・優先順位づけ</li>
+                            <li>AIエージェントに任せる業務の選定</li>
+                            <li>効果検証・導入後の改善提案</li>
+                        </ul>
+                        <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--primary">導入について相談する</a>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 2 -->
-            <div class="border-2 border-accent-yellow rounded-2xl overflow-hidden shadow-md flex flex-col bg-white md:scale-[1.05] z-10 my-4 md:my-0">
-                <div class="bg-accent-yellow h-3 w-full"></div>
-                <div class="p-8 flex-grow">
-                    <span class="text-xs text-accent-yellow font-bold mb-3 block tracking-wider uppercase tracking-widest">Service 02</span>
-                    <h3 class="text-xl font-bold text-main-green mb-3">AI研修</h3>
-                    <p class="text-xs text-accent-yellow mb-6 font-medium">「使える」スキルを身につける実践型研修</p>
-                    <p class="text-sm text-gray-600 mb-8 leading-relaxed">初心者向けの基礎の内容から実践的なワークまで。座学だけでなく、実際に手を動かしながら「明日から使える」スキルを習得します。</p>
-                    <ul class="text-sm space-y-3 mb-8 font-medium">
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 生成AI基礎講座（リテラシー・リスク）</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 業務効率化ワーク</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> プロンプトエンジニアリング実践</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> AI活用マネジメント</li>
-                    </ul>
-                </div>
-                <div class="p-8 pt-0">
-                    <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="block w-full text-center py-3 bg-accent-yellow text-white rounded-lg font-bold btn-hover">研修について相談する</a>
-                </div>
-            </div>
-            <!-- Service 3 -->
-            <div class="border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col bg-white">
-                <div class="bg-blue-400 h-2 w-full"></div>
-                <div class="p-8 flex-grow">
-                    <span class="text-xs text-gray-400 font-bold mb-3 block tracking-wider uppercase tracking-widest">Service 03</span>
-                    <h3 class="text-xl font-bold text-main-green mb-3">AI顧問</h3>
-                    <p class="text-xs text-gray-500 mb-6 font-medium">月次の相談 ＋ 改善提案で現場に定着</p>
-                    <p class="text-sm text-gray-600 mb-8 leading-relaxed">「一度導入して終わり」ではなく、継続的に伴走. 最新情報のキャッチアップや、現場で発生する具体的な課題の解決をサポートします。</p>
-                    <ul class="text-sm space-y-3 mb-8 font-medium">
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 施策のロードマップ作成</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> プロンプト・業務フロー整備</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 社内定着の運用改善</li>
-                        <li class="flex items-center text-gray-700"><span class="text-accent-yellow mr-3">●</span> 最新AIツールの情報提供・検証</li>
-                    </ul>
-                </div>
-                <div class="p-8 pt-0">
-                    <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="block w-full text-center py-3 bg-blue-400 text-white rounded-lg font-bold btn-hover">顧問契約について相談する</a>
+                <div class="service-card reveal" data-delay="2">
+                    <div class="service-card__bar"></div>
+                    <div class="service-card__body">
+                        <span class="service-card__no">Service 03</span>
+                        <h3>AI顧問</h3>
+                        <p class="service-card__tag">月次の相談＋改善提案で現場に定着</p>
+                        <p class="service-card__desc">「一度導入して終わり」ではなく、継続的に伴走。最新情報のキャッチアップや、現場で発生する具体的な課題の解決をサポートします。</p>
+                        <ul>
+                            <li>施策のロードマップ作成</li>
+                            <li>プロンプト・業務フロー整備</li>
+                            <li>社内定着の運用改善</li>
+                            <li>AIエージェント等 最新動向の情報提供・検証</li>
+                        </ul>
+                        <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--sky">顧問について相談する</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Process Section（導入支援の進め方） -->
-<section id="process" class="bg-soft-gray py-20 md:py-24 px-6">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-2xl md:text-4xl font-bold text-center text-main-green">
-      導入支援の進め方
-    </h2>
-
-    <!-- Desktop（PC：各ステップを「番号＋カード」で1カラム化。矢印はカード中央に固定） -->
-    <div class="hidden lg:flex justify-center mt-12">
-      <!-- 全体幅を少し小さくして左右余白を確保 -->
-      <div class="w-full max-w-[1120px] px-6">
-        <div class="grid items-start justify-center
-                    grid-cols-[240px_36px_240px_36px_240px_36px_240px]">
-
-          <!-- ===== Step 01 ===== -->
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-              <span class="text-accent-yellow font-bold text-3xl tracking-wider">01</span>
-            </div>
-
-            <!-- ★間隔を詰める（mt-6 → mt-3） -->
-            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
-              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
-                ヒアリング<br>現状分析
-              </h3>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                貴社の業務内容、課題、AI活用の目的を詳しくお伺いします。
-              </p>
-            </div>
-          </div>
-
-          <!-- Arrow 01 -> 02（カード中央高さに合わせる） -->
-          <div class="flex flex-col items-center">
-            <!-- ★番号(高さh-16)＋間隔(mt-3相当)ぶんをスペーサーにする -->
-            <div class="h-[76px]"></div>
-            <div class="h-[240px] flex items-center justify-center" aria-hidden="true">
-              <span class="text-4xl text-gray-400 leading-none">＞</span>
-            </div>
-          </div>
-
-          <!-- ===== Step 02 ===== -->
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-              <span class="text-accent-yellow font-bold text-3xl tracking-wider">02</span>
-            </div>
-
-            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
-              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
-                プランの<br>ご提案
-              </h3>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                課題解決に最適な導入ステップや研修カリキュラムをご提案します。
-              </p>
-            </div>
-          </div>
-
-          <!-- Arrow 02 -> 03 -->
-          <div class="flex flex-col items-center">
-            <div class="h-[76px]"></div>
-            <div class="h-[240px] flex items-center justify-center" aria-hidden="true">
-              <span class="text-4xl text-gray-400 leading-none">＞</span>
-            </div>
-          </div>
-
-          <!-- ===== Step 03 ===== -->
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-              <span class="text-accent-yellow font-bold text-3xl tracking-wider">03</span>
-            </div>
-
-            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
-              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
-                本格導入<br>研修実施
-              </h3>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                社員の方へ研修を実施し、ガイドライン整備から全社的な導入までを進めます。
-              </p>
-            </div>
-          </div>
-
-          <!-- Arrow 03 -> 04 -->
-          <div class="flex flex-col items-center">
-            <div class="h-[76px]"></div>
-            <div class="h-[240px] flex items-center justify-center" aria-hidden="true">
-              <span class="text-4xl text-gray-400 leading-none">＞</span>
-            </div>
-          </div>
-
-          <!-- ===== Step 04 ===== -->
-          <div class="flex flex-col items-center">
-            <div class="w-28 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-              <span class="text-accent-yellow font-bold text-3xl tracking-wider">04</span>
-            </div>
-
-            <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-8 py-10 h-[240px] text-center">
-              <h3 class="text-xl font-bold text-main-green leading-snug mb-5">
-                運用・定着<br>サポート
-              </h3>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                定期的なフォローアップを行い、運用の改善と定着を支援します。
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile / Tablet（スマホ：縦並び。番号⇔カードの間隔も少し詰める） -->
-    <div class="lg:hidden mt-12 max-w-xl mx-auto">
-      <div class="space-y-6">
-
-        <!-- Step 01 -->
-        <div class="text-center">
-          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-            <span class="text-accent-yellow font-bold text-2xl tracking-wider">01</span>
-          </div>
-          <!-- ★間隔を詰める（mt-5 → mt-3） -->
-          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
-            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
-              ヒアリング<br>現状分析
-            </h3>
-            <p class="text-sm text-gray-600 leading-relaxed">
-              貴社の業務内容、課題、AI活用の目的を詳しくお伺いします。
-            </p>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center" aria-hidden="true">
-          <span class="text-4xl text-gray-400 leading-none rotate-90">＞</span>
-        </div>
-
-        <!-- Step 02 -->
-        <div class="text-center">
-          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-            <span class="text-accent-yellow font-bold text-2xl tracking-wider">02</span>
-          </div>
-          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
-            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
-              プランの<br>ご提案
-            </h3>
-            <p class="text-sm text-gray-600 leading-relaxed">
-              課題解決に最適な導入ステップや研修カリキュラムをご提案します。
-            </p>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center" aria-hidden="true">
-          <span class="text-4xl text-gray-400 leading-none rotate-90">＞</span>
-        </div>
-
-        <!-- Step 03 -->
-        <div class="text-center">
-          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-            <span class="text-accent-yellow font-bold text-2xl tracking-wider">03</span>
-          </div>
-          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
-            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
-              本格導入<br>研修実施
-            </h3>
-            <p class="text-sm text-gray-600 leading-relaxed">
-              社員の方へ研修を実施し、ガイドライン整備から全社的な導入までを進めます。
-            </p>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center" aria-hidden="true">
-          <span class="text-4xl text-gray-400 leading-none rotate-90">＞</span>
-        </div>
-
-        <!-- Step 04 -->
-        <div class="text-center">
-          <div class="mx-auto w-24 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center">
-            <span class="text-accent-yellow font-bold text-2xl tracking-wider">04</span>
-          </div>
-          <div class="mt-3 bg-white rounded-2xl shadow-sm border border-gray-100 px-7 py-8">
-            <h3 class="text-lg font-bold text-main-green leading-snug mb-4">
-              運用・定着<br>サポート
-            </h3>
-            <p class="text-sm text-gray-600 leading-relaxed">
-              定期的なフォローアップを行い、運用の改善と定着を支援します。
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-    <!-- Profile Section -->
-    <section id="profile" class="bg-soft-gray py-20 md:py-24 px-6">
-        <div class="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-3xl shadow-sm flex flex-col md:flex-row items-center gap-10 md:gap-12 border border-gray-100">
-            <div class="w-48 h-48 md:w-56 md:h-56 bg-gray-100 rounded-full overflow-hidden flex-shrink-0 border-4 border-white shadow-md">
-                <!-- プロフィール画像（PNG形式を使用するように更新しました） -->
-                <img src="profile_square_1024.png" alt="Miwako Kato" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x400?text=Miwako+Kato';">
-            </div>
-            <div class="text-center md:text-left">
-                <p class="text-accent-yellow font-bold text-xs mb-3 tracking-widest uppercase">Profile</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-main-green mb-6">iroai 代表 <br class="md:hidden"> <span class="text-2xl ml-0 md:ml-2">Miwako Kato</span></h2>
-                <p class="text-sm md:text-base text-gray-600 font-medium mb-8 leading-relaxed italic">「テクノロジーを、もっと身近に、もっと優しく」をモットーにAI導入・研修・伴走支援を行っています。</p>
-                <div class="text-sm text-gray-700 leading-loose space-y-5 font-medium">
-                    <p>AIは魔法の杖ではありませんが、正しく使えば強力なパートナーになります。難しい専門用語を使わず、現場の方々が「これなら使える！」と思えるような、わかりやすく実践的なサポートを心がけています。</p>
-                    <p>企業のDX推進だけでなく、働く一人ひとりのスキルアップと自信につなげることを大切にしています。</p>
+    <!-- Process -->
+    <section id="process" class="section section--white">
+        <div class="container text-center">
+            <span class="section-label">Process</span>
+            <h2 class="section-title">導入支援の進め方</h2>
+            <p class="section-lead">小さく始めて、効果を確かめながら広げる。ヒアリングから定着まで、4つのステップで着実に進めます。</p>
+            <div class="process">
+                <div class="process-step reveal">
+                    <div class="process-step__num">01</div>
+                    <h3>ヒアリング・現状分析</h3>
+                    <p>貴社の業務内容、課題、AI活用の目的を詳しくお伺いします。</p>
+                </div>
+                <div class="process-step reveal" data-delay="1">
+                    <div class="process-step__num">02</div>
+                    <h3>プランのご提案</h3>
+                    <p>課題解決に最適な導入ステップや研修カリキュラムをご提案します。</p>
+                </div>
+                <div class="process-step reveal" data-delay="2">
+                    <div class="process-step__num">03</div>
+                    <h3>本格導入・研修実施</h3>
+                    <p>まず小さく試して効果を検証。手応えを確かめながら、研修とガイドライン整備で全社的な導入へ進めます。</p>
+                </div>
+                <div class="process-step reveal" data-delay="3">
+                    <div class="process-step__num">04</div>
+                    <h3>運用・定着サポート</h3>
+                    <p>定期的なフォローアップで運用を改善。うまくいった活用法を横展開し、組織に定着させます。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section（追加：緑のフッター(Contact CTA)の直前） -->
-    <style>
-        /* FAQセクション内だけの表示調整（他セクションには影響しません） */
-        #faq details summary { list-style: none; }
-        #faq details summary::-webkit-details-marker { display: none; }
-        #faq .faq-chevron { transition: transform 0.2s ease; }
-        #faq details[open] .faq-chevron { transform: rotate(180deg); }
+    <!-- Profile -->
+    <section id="profile" class="section section--pale">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">Profile</span>
+                <h2 class="section-title">プロフィール</h2>
+                <p class="section-lead">AIの導入・研修・伴走支援を、ひとつひとつ丁寧に。</p>
+            </div>
+            <div class="profile-card reveal">
+                <div class="profile-card__photo">
+                    <img src="profile_square_1024.png" alt="iroai 代表 Miwako Kato">
+                </div>
+                <div class="profile-card__text">
+                    <h2><small>iroai 代表</small>Miwako Kato</h2>
+                    <p class="profile-card__motto">AIを、あなたの会社の"あたりまえ"に。<br>人と組織が変わるところまで、伴走します。</p>
+                    <p>生成AIの登場で、仕事のやり方はこの数年で大きく変わりました。そしていま、AIに業務を任せる「AIエージェント」の時代が始まっています。変化が速いからこそ、「何から手をつければいいのかわからない」と感じるのは、ごく自然なことです。</p>
+                    <p>だからこそ私は、難しい専門用語を使いません。現場の方々が「これなら使える！」と実感できるところまで、丁寧に伴走することを大切にしています。流行のツールをすすめるのではなく、貴社の業務と人に合わせて、無理のない一歩から。</p>
+                    <p>AIと共生しながら、組織には生産性と競争力を、働く一人ひとりには新しい役割とやりがいを。組織と人が、次のステージへ進む未来までご一緒します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        /* 開いている項目だけ枠を出す（スクショ寄り） */
-        #faq details { border-bottom: 1px solid var(--border-soft); }
-        #faq details[open] {
-            border: 2px solid rgba(3, 104, 25, 0.55);
-            border-radius: 14px;
-            padding: 18px 18px;
-            margin: 12px 0;
-            background: transparent;
-        }
-        #faq details[open] + details { border-top: 1px solid transparent; }
-        #faq details[open] summary { padding-bottom: 10px; }
-    </style>
-    <section id="faq" class="bg-soft-gray py-20 md:py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-main-green mb-12 md:mb-14">よくあるご質問</h2>
-
-            <div class="max-w-4xl mx-auto">
-                <!-- Q1 -->
-                <details class="py-6">
-                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
-                        <span>AIについて全く知識がありませんが大丈夫ですか？</span>
-                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
+    <!-- FAQ -->
+    <section id="faq" class="section section--white">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">よくあるご質問</h2>
+                <p class="section-lead">お問い合わせの前に、気になる点をご確認いただけます。</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        AIについて全く知識がありませんが、大丈夫ですか？
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                     </summary>
-                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
-                        はい、全く問題ありません。専門用語を使わず、基礎から丁寧に解説いたしますのでご安心ください。
-                    </div>
+                    <div class="faq-item__answer">はい、全く問題ありません。専門用語を使わず、基礎から丁寧に解説いたしますのでご安心ください。</div>
                 </details>
-
-                <!-- Q2 -->
-                <details class="py-6">
-                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
-                        <span>オンラインでの研修は可能ですか？</span>
-                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        オンラインでの研修は可能ですか？
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                     </summary>
-                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
-                        はい、Zoom等を使用したオンライン研修も可能です。全国どこからでもご依頼いただけます。
-                    </div>
+                    <div class="faq-item__answer">はい、Zoom等を使用したオンライン研修も可能です。全国どこからでもご依頼いただけます。</div>
                 </details>
-
-                <!-- Q3 -->
-                <details class="py-6">
-                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
-                        <span>少人数でも依頼できますか？</span>
-                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        少人数でも依頼できますか？
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                     </summary>
-                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
-                        はい、数名のチーム単位から全社研修まで幅広く対応しております。お気軽にご相談ください。
-                    </div>
+                    <div class="faq-item__answer">はい、数名のチーム単位から全社研修まで幅広く対応しております。お気軽にご相談ください。</div>
                 </details>
-
-                <!-- Q4 -->
-                <details class="py-6">
-                    <summary class="flex items-center justify-between cursor-pointer text-main-green font-bold text-sm md:text-base">
-                        <span>セキュリティ面が心配です。</span>
-                        <svg class="w-5 h-5 text-main-green faq-chevron flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        AIエージェントとは何ですか？うちの会社にも関係ありますか？
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                     </summary>
-                    <div class="mt-4 text-gray-600 leading-relaxed text-sm md:text-base">
-                        企業利用におけるセキュリティリスクや対策についても、研修やガイドライン策定の中でしっかりとお伝えいたします。
-                    </div>
+                    <div class="faq-item__answer">ChatGPTのように人がその都度指示を出すAIと違い、目標を与えると自律的に段取りを組んで業務を進めてくれるAIのことです。定型的な問い合わせ対応や書類処理など、"任せられる業務"がある会社なら規模を問わず関係があります。「うちに関係あるのか？」の見極めからで構いませんので、お気軽にご相談ください。</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        セキュリティ面が心配です。
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </summary>
+                    <div class="faq-item__answer">企業利用におけるセキュリティリスクや対策についても、研修やガイドライン策定の中でしっかりとお伝えいたします。</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        料金について教えてください。
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </summary>
+                    <div class="faq-item__answer">会社の状況や課題によって最適な進め方が異なるため、まずは30分の無料相談で状況をお聞かせください。内容に合わせたプランとお見積りをご提案します。相談に費用は一切かかりません。</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="q">Q</span>
+                        相談したら、必ず契約しないといけませんか？
+                        <svg class="chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </summary>
+                    <div class="faq-item__answer">いいえ、そんなことはありません。「まずは現状を整理したい」だけでも大歓迎です。無理な営業は一切いたしませんので、お気軽にご相談ください。</div>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA Section -->
-    <section class="bg-main-green py-20 md:py-24 px-6 text-center text-white relative overflow-hidden">
-        <div class="relative z-10 max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl md:text-4xl font-bold mb-6">まずは、お気軽にご相談ください</h2>
-            <p class="text-sm md:text-base mb-12 opacity-90 leading-relaxed">
-                AI導入に関するお悩み、研修のご相談など、<br class="hidden md:block">
-                どんな些細なことでも構いません。
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta__inner">
+            <div class="cta__badge">30分無料相談 受付中</div>
+            <h2>まずは30分、無料でご相談ください</h2>
+            <p class="cta__lead">
+                AI導入に関するお悩み、研修のご相談など、どんな些細なことでも構いません。<br>
+                現状をお伺いし、貴社に合った進め方を一緒に考えます。
             </p>
-            <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" class="inline-block bg-accent-yellow text-white px-10 md:px-12 py-4 rounded-full text-lg font-bold shadow-lg btn-hover mb-12 md:mb-16">
-                お問い合わせはこちら ＞
-            </a>
-            
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-sm font-medium opacity-90">
-                <div class="flex items-center">
-                    <svg class="w-5 h-5 mr-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    contact@iroai-lab.com
-                </div>
-                <!--
-                <a href="https://lit.link/iroai_ai" target="_blank" class="flex items-center hover:text-accent-yellow transition border-b border-transparent hover:border-accent-yellow pb-1">
-                    <svg class="w-5 h-5 mr-3 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                    Lit.Link
-                </a>
-                -->
+            <a href="https://forms.gle/6DcCaAUbE2HAeVo9A" target="_blank" rel="noopener" class="btn btn--primary">30分無料相談を申し込む →</a>
+            <div class="cta__points">
+                <span><span class="dot">✓</span>相談無料</span>
+                <span><span class="dot">✓</span>オンライン30分</span>
+                <span><span class="dot">✓</span>無理な営業なし</span>
+            </div>
+            <div class="cta__mail">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                contact@iroai-lab.com
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-10 mb-10 text-center md:text-left">
-                <div class="text-2xl font-bold mb-8 md:mb-0 tracking-tight text-white font-bold">iroai</div>
-                <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium text-gray-400">
-                    <a href="#features" class="hover:text-white transition">特長</a>
-                    <a href="#services" class="hover:text-white transition">サービス</a>
-                    <a href="#profile" class="hover:text-white transition">プロフィール</a>
-                    <a href="#" class="hover:text-white transition">プライバシーポリシー</a>
-                </div>
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__top">
+                <div class="footer__logo">iroai<span>.</span></div>
+                <nav class="footer__nav">
+                    <a href="#features">特長</a>
+                    <a href="#services">サービス</a>
+                    <a href="#process">進め方</a>
+                    <a href="#profile">プロフィール</a>
+                    <a href="privacy.html">プライバシーポリシー</a>
+                </nav>
             </div>
-            <div class="text-center">
-                <p class="text-[10px] md:text-xs text-gray-500 tracking-wider">© 2026 iroai - Miwako Kato. All rights reserved.</p>
-            </div>
+            <p class="footer__copy">© 2026 iroai - Miwako Kato. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // モバイルメニューの開閉制御
+        // ヘッダー: スクロールで影を付ける
+        const header = document.getElementById('header');
+        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // モバイルメニューの開閉
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
 
         function toggleMenu() {
             const isOpen = mobileMenu.classList.toggle('open');
-            
-            // アイコンの切り替え（三本線 ↔ バツ印）
-            if (isOpen) {
-                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
-                menuIcon.classList.add('rotate-90');
-            } else {
-                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />';
-                menuIcon.classList.remove('rotate-90');
-            }
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            menuIcon.innerHTML = isOpen
+                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'
+                : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
         }
-
         menuToggle.addEventListener('click', toggleMenu);
-
-        // メニュー項目をクリックしたらメニューを閉じる
-        mobileLinks.forEach(link => {
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('open')) {
-                    toggleMenu();
-                }
+                if (mobileMenu.classList.contains('open')) toggleMenu();
             });
         });
+
+        // スクロール連動フェードイン
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            reveals.forEach(el => observer.observe(el));
+        } else {
+            reveals.forEach(el => el.classList.add('is-visible'));
+        }
     </script>
 
 </body>
